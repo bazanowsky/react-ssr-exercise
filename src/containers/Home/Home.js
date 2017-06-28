@@ -1,42 +1,52 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router';
-import config from '../../config';
 import Helmet from 'react-helmet';
+import { Col, Row, Grid, Thumbnail, Accordion, Panel } from 'react-bootstrap';
 
 export default class Home extends Component {
   render() {
     const styles = require('./Home.scss');
-    // require the logo image both from client and server
-    const logoImage = require('./logo.png');
+    const images = new Array(200).fill(1);
+    const accordions = new Array(8).fill(50);
     return (
       <div className={styles.home}>
         <Helmet title="Home"/>
-        <div className={styles.masthead}>
-          <div className="container">
-            <div className={styles.logo}>
-              <p>
-                <img src={logoImage}/>
-              </p>
-            </div>
-            <h1>{config.app.title}</h1>
-
-            <h2>{config.app.description}</h2>
-
-          </div>
-        </div>
 
         <div className="container">
-          <br />
-          <br />
 
-          <div className="jumbotron">
-            <h2>Cleared boilerplate:</h2>
+          <Grid>
+            <Row>
+              {accordions.map((accordion, accordionIndex) => {
+                console.log(accordion);
+                const items = new Array(accordion).fill(1);
+                return (
+                  <Col xs={12} md={6} key={`accordion-group-${accordionIndex}`}>
+                    <Accordion>
+                      {items.map((item, itemIndex) => (
+                        <Panel header={`Accordion: ${accordionIndex} Item: ${itemIndex}`} eventKey={itemIndex}>
+                          asdf
+                        </Panel>
+                      ))}
+                    </Accordion>
+                  </Col>
+                );
+              })}
 
-            <p><a className="btn btn-primary btn-lg" href="https://github.com/erikras/react-redux-universal-hot-example" role="button" target="_blank">Read documentation</a></p>
-          </div>
+            </Row>
+          </Grid>
 
+          <hr/>
 
+          <Grid>
+            <Row>
+              {images.map((el, index) => (
+                <Col xs={6} md={3} key={`image-${index}`}>
+                  <Thumbnail href="#" alt={`image-${index}`} src={`http://lorempixel.com/${200 + index}/${200 + index}/`} title={`${200 + index}x${200 + index}`} />
+                </Col>
+              ))}
+            </Row>
+          </Grid>
         </div>
+
       </div>
     );
   }
