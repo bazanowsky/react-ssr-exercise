@@ -12,11 +12,10 @@ export default class Home extends Component {
         <Helmet title="Home"/>
 
         <div className="container">
-
+          <br />
           <Grid>
             <Row>
               {accordions.map((accordion, accordionIndex) => {
-                console.log(accordion);
                 const items = new Array(accordion).fill(1);
                 return (
                   <Col xs={12} md={6} key={`accordion-group-${accordionIndex}`}>
@@ -30,7 +29,6 @@ export default class Home extends Component {
                   </Col>
                 );
               })}
-
             </Row>
           </Grid>
 
