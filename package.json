@@ -31,9 +31,13 @@
     "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc src api",
     "start-dev": "better-npm-run start-dev",
+    "start-dev-client": "better-npm-run start-dev-client",
     "start-dev-api": "better-npm-run start-dev-api",
-    "watch-client": "better-npm-run watch-client",
-    "dev": "concurrent --kill-others \"npm run watch-client\" \"npm run start-dev\" \"npm run start-dev-api\"",
+    "watch-dev": "better-npm-run watch-dev",
+    "watch-dev-client": "better-npm-run watch-dev-client",
+    "dev": "concurrent --kill-others \"npm run watch-dev\" \"npm run start-dev\" \"npm run start-dev-api\"",
+    "dev-client": "concurrent --kill-others \"npm run watch-dev-client\" \"npm run start-dev-client\" \"npm run start-dev-api\"",
+    "dev-all": "concurrent --kill-others \"npm run watch-dev\" \"npm run start-dev\" \"npm run watch-dev-client\" \"npm run start-dev-client\" \"npm run start-dev-api\"",
     "test": "karma start",
     "test-node": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register",
     "test-node-watch": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register --watch"
@@ -65,6 +69,16 @@
         "APIPORT": 3030
       }
     },
+    "start-dev-client": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "development",
+        "PORT": 4000,
+        "APIPORT": 3030,
+        "DISABLE_SSR": true
+      }
+    },
     "start-dev-api": {
       "command": "node ./bin/api.js",
       "env": {
@@ -73,12 +87,21 @@
         "APIPORT": 3030
       }
     },
-    "watch-client": {
+    "watch-dev": {
       "command": "node webpack/webpack-dev-server.js",
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
         "PORT": 3000,
+        "APIPORT": 3030
+      }
+    },
+    "watch-dev-client": {
+      "command": "node webpack/webpack-dev-server.js",
+      "env": {
+        "UV_THREADPOOL_SIZE": 100,
+        "NODE_PATH": "./src",
+        "PORT": 4000,
         "APIPORT": 3030
       }
     },

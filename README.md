@@ -7,25 +7,29 @@
 yarn
 ```
 
-## Running Dev Server
-
+## Running Dev Server 
+### 2 Servers - client + server side
 ```bash
-yarn run start-dev 
+yarn run dev-all
 ```
 
-
-## DISABLE / ENABLE Server-Side Rendering
-
-1. Open ./bin/server.js
+###  server side only
+```bash
+yarn run dev
 ```
 
-global.__CLIENT__ = false;
-global.__SERVER__ = true;
-global.__DISABLE_SSR__ = true;  // <----- DISABLES SERVER SIDE RENDERING FOR ERROR DEBUGGING
-global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
-
+###  client side only
+```bash
+yarn run dev-client
 ```
 
+## Open servers:
+
+__Server side__ runs on: `localhost:3000`
+
+__Client side__ runs on: `localhost:4000`
+
+__Remember to force full refresh - Cmd+shift+R__
 
 ## ORIGINAL BOILERPLATE DOCUMENTATION
 
