@@ -7,6 +7,7 @@ var webpack = require('webpack');
 var assetsPath = path.resolve(__dirname, '../static/dist');
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
+var env = (process.env.NODE_ENV || 'production');
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
@@ -21,7 +22,6 @@ try {
   console.error('==>     ERROR: Error parsing your .babelrc.');
   console.error(err);
 }
-
 
 var babelrcObjectDevelopment = babelrcObject.env && babelrcObject.env.development || {};
 
@@ -94,6 +94,9 @@ module.exports = {
   },
   progress: true,
   resolve: {
+    alias: {
+      'env-config': path.join(process.cwd(), 'src', 'environment', `${env}.js`),
+    },
     modulesDirectories: [
       'src',
       'node_modules'
