@@ -15,5 +15,5 @@ const teamsError = (state, action) => state.set('error', action.payload.error);
 
 export default createReducer(INITIAL_STATE, {
   [teamsActionsTypes.GET_TEAMS_SUCCESS]: teamsSuccess,
-  [teamsActionsTypes.GET_TEAMS_ERORR]: teamsError,
+  [teamsActionsTypes.GET_TEAMS_ERROR]: teamsError,
 });
