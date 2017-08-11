@@ -17,16 +17,16 @@ export function* fetchTeamsSaga() {
   try {
     const data = yield call(request, `${envConfig.api.baseUrl}${envConfig.api.urls.teams}`, sagaFetchingOptions);
     yield put(teamsActions.getTeamsSuccess(data));
-  } catch (e) {
-    yield put(teamsActions.getTeamsError(e));
+  } catch (err) {
+    yield put(teamsActions.getTeamsError(err));
   }
 }
 
 export function* getTeamsSaga() {
   try {
     yield call(takeLatest, teamsActionsTypes.GET_TEAMS, fetchTeamsSaga);
-  } catch (e) {
-    yield put(teamsActions.getTeamsError(e));
+  } catch (err) {
+    yield put(teamsActions.getTeamsError(err));
   }
 }
 
