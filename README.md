@@ -1,4 +1,4 @@
-# Apptension Exercise React SSR 
+# Apptension Exercise React SSR
 
 
 ## Installation
@@ -7,7 +7,7 @@
 yarn
 ```
 
-## Running Dev Server 
+## Running Dev Server
 
  * __2 Servers - client + server side__: `yarn dev-all`
  * __server side only__: `yarn dev`
@@ -22,3 +22,7 @@ yarn
 ## ORIGINAL BOILERPLATE DOCUMENTATION
 
 https://github.com/erikras/react-redux-universal-hot-example
+
+## SSR exercise
+
+https://gist.github.com/mikeqcp/73256f1191a6b64290db907cf135365a
